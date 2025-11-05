@@ -57,19 +57,6 @@ for xpt_file in data_dir.glob('*.XPT'):
     convert_xpt_to_csv(xpt_file)
 ```
 
-### Opción 2: Usar el Script Automático
-
-```python
-from nhanes_data_converter import download_full_cycle
-
-# Descargar ciclo completo
-download_full_cycle('2007-2008', 
-                    modules=['DEMO', 'EXAM', 'LAB', 'QUEST'],
-                    output_dir='./data')
-```
-
-**⚠️ Nota**: La descarga automática puede fallar si el CDC cambia las URLs. En ese caso, usa la Opción 1.
-
 ### Opción 3: Conversión Manual con Python
 
 Si ya tienes los archivos .XPT:

@@ -61,11 +61,13 @@ venv.bak/
 models/*.pkl
 models/*.h5
 
-# Data files (descomentar si no quieres versionar datos)
-# data/
-# *.csv
-# *.parquet
-# *.feather
+# Data files - NO versionar archivos de datos (son muy grandes)
+data/*.xpt
+data/*.csv
+data/*.parquet
+data/*.feather
+# Mantener solo .gitkeep para estructura de directorios
+!data/.gitkeep
 
 # Logs
 *.log

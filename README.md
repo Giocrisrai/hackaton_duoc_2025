@@ -14,6 +14,8 @@ Este repositorio contiene una guía completa y código template para el hackatho
 
 ## 🚀 Quick Start
 
+**📖 Para inicio rápido detallado (5 minutos), ver: `QUICK_START.md`**
+
 ### 1. Clonar o descargar el repositorio
 
 ```bash
@@ -44,11 +46,27 @@ pip install -r requirements.txt
 
 **Los datos NHANES NO vienen en CSV directamente**. Necesitas descargarlos y convertirlos.
 
-**Opción A - Descarga Manual (Recomendado):**
+**Opción A - Descarga Automática (Intentar primero):**
+
+```bash
+# Activar entorno virtual
+source venv/bin/activate
+
+# Descargar un archivo de prueba
+python descargar_nhanes.py --cycle 2017-2018 --module DEMO
+
+# Descargar múltiples módulos
+python descargar_nhanes.py --cycle 2017-2018 --module DEMO EXAM LAB
+```
+
+**Si la descarga automática falla, usa la Opción B (descarga manual).**
+
+**Opción B - Descarga Manual:**
 1. Ve a: https://wwwn.cdc.gov/nchs/nhanes/Default.aspx
 2. Descarga los archivos .XPT para cada ciclo
 3. Colócalos en `./data/`
-4. Convierte a CSV usando el script simple:
+
+**Opción C - Convertir .XPT a CSV (cuando tengas los archivos):**
 
 ```bash
 python convertir_nhanes.py
@@ -65,16 +83,7 @@ for xpt_file in Path('./data').glob('*.XPT'):
     convert_xpt_to_csv(xpt_file)
 ```
 
-**Opción B - Usar el script automático:**
-
-```python
-from nhanes_data_converter import download_full_cycle
-
-# Descargar ciclo completo
-download_full_cycle('2007-2008')
-```
-
-**📖 Ver guía completa**: `CONVERSION_DATOS_NHANES.md`
+**📖 Ver guía completa**: `CONVERSION_DATOS_NHANES.md` o `QUICK_START.md`
 
 ### 5. Abrir el notebook guía
 
@@ -98,9 +107,12 @@ duoc_hackaton/
 ├── requirements.txt                      # Dependencias Python
 ├── .gitignore                           # Archivos a ignorar en Git
 ├── README.md                            # Este archivo
+├── descargar_nhanes.py                  # Script para descargar datos .XPT automáticamente
 ├── nhanes_data_converter.py             # Script completo para convertir datos .XPT a CSV
 ├── convertir_nhanes.py                  # Script simple para conversión rápida
-├── CONVERSION_DATOS_NHANES.md           # Guía de conversión de datos
+├── CONVERSION_DATOS_NHANES.md           # Guía completa de obtención y conversión de datos
+├── test_entorno.py                      # Script para probar el entorno
+├── test_datos.py                         # Script para probar la carga de datos
 ├── data/                                # Datos NHANES (agregar aquí)
 ├── kb/                                  # Base de conocimiento para RAG
 └── models/                              # Modelos entrenados (generados)
